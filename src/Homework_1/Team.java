@@ -1,14 +1,12 @@
 package Homework_1;
+
 /*
 Класс команды. Сначало думал от него наследоваться, но в процессе выходило как-то криво, и логически и физически.
 Это лучший вариант.
  */
-
 import java.util.ArrayList;
 
 public class Team {
-    private static final String BOLD = "\033[1m";
-    private static final String RESET = "\u001B[0m";
     private String teamName;
     private ArrayList<Member> team = new ArrayList<>();
     private ArrayList<Member> lastResult = new ArrayList<>();
@@ -45,7 +43,7 @@ public class Team {
     @Override
     public String toString() {
         String result = "";
-        result += "Team name: \"" + teamName + "\"\n\n" + BOLD + "MEMBERS:\n" + RESET;
+        result += "Team name: \"" + teamName + "\"\n\n" + Console.BOLD + "MEMBERS:\n" + Console.RESET;
         for (Object o : team) {
             result += o.toString() + "\n";
         }
