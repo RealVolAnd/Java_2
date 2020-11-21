@@ -1,8 +1,8 @@
 package Homework_1;
+
 /*
 Класс полосы препятствий.
  */
-
 import java.util.ArrayList;
 
 public class Course {
@@ -33,7 +33,7 @@ public class Course {
 
     public ArrayList<Member> doIt(Team team) {
         int j = 0, diff = 0;
-        ArrayList<Member> clon = new ArrayList<>(); //Пришлось создавать клоны т.к. придется удалять записи.
+        ArrayList<Member> clon = new ArrayList<>(); //Пришлось создавать клоны т.к. нужно удалять записи.
         ArrayList<Member> result = new ArrayList<>();
         clon.addAll(team.getTeam());
 
