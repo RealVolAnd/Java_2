@@ -12,6 +12,10 @@ public class Console {
         System.out.println("\n" + BOLD + header + RESET);
     }
 
+    public static void printHeaderNoNewLine(String header) {
+        System.out.println(BOLD + header + RESET);
+    }
+
     public static void printText(String text) {
         System.out.println(text);
     }
