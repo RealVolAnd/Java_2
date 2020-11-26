@@ -8,7 +8,7 @@ public class PhoneList {
     private HashMap<String,String>phoneList;
 
     public PhoneList(){
-        phoneList=new HashMap<>();
+         phoneList=new HashMap<>();
     }
 
     public void add(String name,String phoneNo){

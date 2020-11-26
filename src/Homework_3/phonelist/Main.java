@@ -2,7 +2,9 @@ package Homework_3.phonelist;
 
 public class Main {
     public static void main(String[] args) {
-        PhoneList phoneList = new PhoneList();
+
+        //PhoneList phoneList = new PhoneList();
+        PhoneListByUser phoneList = new PhoneListByUser();
 
         phoneList.add("Lennon", "111-11-11");
         phoneList.add("McCartney", "222-22-22");
@@ -14,6 +16,10 @@ public class Main {
         phoneList.add("Lennon", "888-88-88");
         phoneList.add("Harrison", "999-99-99");
 
-        System.out.println("Lennon:\n" + phoneList.get("lennon"));
+
+        double startTime = System.nanoTime();
+        System.out.println("Lennon:\n" + phoneList.get("Lennon"));
+        double stopTime = System.nanoTime();
+        System.out.println("Time: " + ((stopTime - startTime) / 1000000) + " ms");
     }
 }
