@@ -3,6 +3,10 @@ package Homework_5;
 import java.util.Arrays;
 
 public class Main {
+
+    private static final int SEC_TIMEOUT = 10;
+
+
     public static void main(String[] args) {
         float[] arr = initArray();
         System.out.println("Processing tasks...");
@@ -10,7 +14,7 @@ public class Main {
         float resArray1[] = arrayProcessorSingleThread(arr);
         float resArray2[] = arrayProcessorDoubleThread(arr);
 
-        System.out.println("Resulting arrays " + ((Arrays.equals(resArray1, resArray2)) ? "are" : "not are")+" equiv");
+        System.out.println("Resulting arrays " + ((Arrays.equals(resArray1, resArray2)) ? "are" : "not are") + " equiv");
     }
 
     private static float[] initArray() {
@@ -41,6 +45,7 @@ public class Main {
     Расчет массива в 2 потока
      */
     private static float[] arrayProcessorDoubleThread(float[] arr) {
+
         final int h = arr.length / 2;
         float[] ar1 = new float[h];
         float[] ar2 = new float[h];
@@ -66,13 +71,19 @@ public class Main {
         Thread thr2 = new Thread(run2);
         thr2.start();
 
+
+        while (thr1.isAlive() && thr2.isAlive()) {
+                if((System.currentTimeMillis() - a)/1000 >= SEC_TIMEOUT) {
+                    System.out.println("Error:  Timeout occuired");
+                    break;
+                }
+        }
+
         System.arraycopy(ar1, 0, arr, 0, h);
         System.arraycopy(ar2, 0, arr, h, h);
         System.out.println("2.Double thread exec time,ms: " + (System.currentTimeMillis() - a));
-
         return arr;
     }
-
 
 
 }
