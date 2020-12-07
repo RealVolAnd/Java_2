@@ -9,6 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
+
             server = new MyChatServer(8189);
             server.startServer();
         } catch (IOException e) {

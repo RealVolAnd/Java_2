@@ -44,8 +44,7 @@ public class MyChatClient {
         thr1.start();
 
         while (true) {
-
-            while (rxBuffer.hasMsg()) {
+            if (rxBuffer.hasMsg()) {
                 Console.printlnText(rxBuffer.getNextMsg());
             }
         }

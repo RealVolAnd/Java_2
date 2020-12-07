@@ -25,7 +25,7 @@ public class MyChatTxSocket extends Thread {
             Console.printServerInfo("Client Tx socket " + name + " opened ");
 
             while (!isInterrupted()) {
-                while (Main.client.txBuffer.hasMsg()) {
+                if (Main.client.txBuffer.hasMsg()) {
                     output.writeUTF(Main.client.txBuffer.getNextMsg());
                 }
             }
