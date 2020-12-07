@@ -27,7 +27,7 @@ public class MyChatRxSocket extends Thread {
             Console.printServerInfo("Client Rx socket " + name + " opened");
 
             while (!isInterrupted()) {
-                while (input.available() > 0) {
+                if (input.available() > 0) {
                     Main.client.rxBuffer.putMsg("Server said >> " + input.readUTF());
                 }
             }

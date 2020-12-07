@@ -30,7 +30,7 @@ public class MyChatServer {
     public void startServer() throws IOException {
 
         openServerSocket();
-        Console.printServerInfo("Server waiting for client message on port " + this.serverPort + ".....");
+        Console.printServerInfo("Server waiting for connection on port: " + this.serverPort + ".....");
         clientSocket = this.serverSocket.accept();// Waiting for clients......
 
         Console.printServerInfo("Client connected from: "+clientSocket.getInetAddress().toString()+":"+clientSocket.getPort());
@@ -49,8 +49,7 @@ public class MyChatServer {
         thr1.start();
 
         while (true) {
-
-            while (rxBuffer.hasMsg()) {
+            if (rxBuffer.hasMsg()) {
                 Console.printlnText(rxBuffer.getNextMsg());
             }
         }
