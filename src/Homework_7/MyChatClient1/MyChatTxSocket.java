@@ -22,7 +22,7 @@ public class MyChatTxSocket extends Thread {
 
         try {
             output = new DataOutputStream(this.clSocket.getOutputStream());
-            Console.printServerInfo("Client Tx socket " + name + " opened ");
+           // Console.printServerInfo("Client Tx socket " + name + " opened ");
 
             while (!isInterrupted()) {
                 if (Homework_7.MyChatClient1.Main.client.txBuffer.hasMsg()) {

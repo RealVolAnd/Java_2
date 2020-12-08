@@ -24,11 +24,11 @@ public class MyChatRxSocket extends Thread {
         try {
             input = new DataInputStream(this.clSocket.getInputStream());
 
-            Console.printServerInfo("Client Rx socket " + name + " opened");
+          //  Console.printServerInfo("Client Rx socket " + name + " opened");
 
             while (!isInterrupted()) {
                 if (input.available() > 0) {
-                    Homework_7.MyChatClient1.Main.client.rxBuffer.putMsg("Server said >> " + input.readUTF());
+                    Homework_7.MyChatClient1.Main.client.rxBuffer.putMsg(input.readUTF());
                 }
             }
         } catch (IOException e) {

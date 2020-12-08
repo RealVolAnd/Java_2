@@ -18,14 +18,16 @@ public class MyChatUser {
     public String getName(){
             return this.nickname;
     }
-    public boolean checkIn(String nickname,String password){
-            if(nickname.equals(this.nickname)&&password.equals(this.password)) {
-                this.isAuthorized=true;
-            }
-            return this.isAuthorized;
+    public String getPassword(){
+        return this.password;
     }
+
+
     public void checkOut(){
             this.isAuthorized=false;
+    }
+    public void setAuthorized(boolean b){
+        this.isAuthorized=b;
     }
     public boolean isAutorized(){
         return this.isAuthorized;

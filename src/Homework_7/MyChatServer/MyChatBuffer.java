@@ -21,10 +21,4 @@ public class MyChatBuffer {
         }
         return result;
     }
-
-    synchronized public boolean hasMsg() {
-        boolean result = false;
-        if (myChatBuffer.size() > 0) result = true;
-        return result;
-    }
 }
