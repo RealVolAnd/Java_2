@@ -57,11 +57,12 @@ public class MyChatServer {
                if( tmpStr!=null){
                    String[] tmpBuf=tmpStr.split(" ");
 
-                   if(tmpBuf.equals("--++-+~")){
+                   if(tmpBuf[1].equals("--++-+~")){
                        for(MyChatUser user: userList.getList()){
                            if(user.isAutorized()){
                                try{
                                user.getConnection().sendMsgToClient(tmpStr);
+                                   Console.printlnText("Broadcast message:"+tmpStr);
                                }catch (Exception e){
                                    e.printStackTrace();
                                }
@@ -76,6 +77,7 @@ public class MyChatServer {
                        if(dstUser!=null&&dstUser.isAutorized()){
                            try{
                                dstUser.getConnection().sendMsgToClient(tmpStr);
+                               Console.printlnText("Private message:"+tmpStr);
                            }catch (Exception e){
                                e.printStackTrace();
                            }
@@ -83,7 +85,7 @@ public class MyChatServer {
 
 
                            try{
-                               srcUser.getConnection().sendMsgToClient("User %s is not on-line now. Message undelivered");
+                               srcUser.getConnection().sendMsgToClient("User "+dstUser+" is not on-line now. Message undelivered");
                            }catch (Exception e){
                                e.printStackTrace();
                            }

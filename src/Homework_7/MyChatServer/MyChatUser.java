@@ -19,7 +19,7 @@ public class MyChatUser {
             return this.nickname;
     }
     public boolean checkIn(String nickname,String password){
-            if(nickname==this.nickname&&password==this.password) {
+            if(nickname.equals(this.nickname)&&password.equals(this.password)) {
                 this.isAuthorized=true;
             }
             return this.isAuthorized;

@@ -40,14 +40,15 @@ public class MyChatUserConnection {
 
         for(int i=0;i<3;i++){
             sendMsgToClient("nickname:");
-            tempNickname=scan.nextLine();
+            tempNickname=input.readUTF();
             sendMsgToClient("password:");
-            tempPassword=scan.nextLine();
+            tempPassword=input.readUTF();
 
             tempUser=userList.checkUserLogin(tempNickname,tempPassword);
             if(tempUser!=null){
                 tempUser.bindConnection(this);
                 this.user=tempUser;
+                sendMsgToClient("You has being authorized in MyChat.\n For send private message use: -pm nickname message. All other messages will be sent in Broadcast mode");
                 break;
             }
             sendMsgToClient("Incorrect nickname or password. Try again.");
@@ -57,11 +58,24 @@ public class MyChatUserConnection {
         if(tempUser==null){
             sendMsgToClient("Incorrect nickname or password. Session closed.");
         } else{
+            final String tmpName=tempUser.getName();
 
             Runnable run1 = () -> {
                 while (true) {
                     try{
-                        server.rxBuffer.putMsg(input.readUTF());
+                        String tmpStr="";
+                        if(input.available()>0){
+                            tmpStr=input.readUTF();
+                            if(tmpStr.startsWith("-pm")){
+                                tmpStr=tmpName+tmpStr.substring(3,tmpStr.length()-1);
+                                server.rxBuffer.putMsg(tmpStr);
+                            } else {
+                                tmpStr=tmpName+" --++-+~ "+tmpStr;
+                                server.rxBuffer.putMsg(tmpStr);
+                            }
+
+                        }
+
                     }catch (Exception e){
 
                     }

@@ -8,6 +8,15 @@ public class MyChatUserList {
 
     MyChatUserList(){
         chatUsers = new HashSet<>();
+        fillUserList();
+    }
+
+
+    private void fillUserList(){
+        chatUsers.add(new MyChatUser("nickname1","pass1"));
+        chatUsers.add(new MyChatUser("nickname2","pass2"));
+        chatUsers.add(new MyChatUser("nickname3","pass3"));
+        chatUsers.add(new MyChatUser("nickname4","pass4"));
     }
 
     public void add(MyChatUser user){
@@ -20,7 +29,7 @@ public class MyChatUserList {
 
     public MyChatUser findUserByNickName(String nickName){
         for(MyChatUser user: chatUsers){
-            if (user.getName()==nickName) return user;
+            if (nickName.equals(user.getName()) ) return user;
         }
         return null;
     }
